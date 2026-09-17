@@ -1,0 +1,40 @@
+# Labelled retrieval set. Authored by the project developer against the synthetic knowledge base.
+# Queries are paraphrased (not copied from section text) to avoid favouring lexical search.
+# relevant: chunk ids judged relevant; ids the requester cannot access are removed at evaluation time.
+# Caveat: small (36 queries), single annotator -> treat metrics as indicative, not benchmark-grade.
+- {id: q01, tenant: emerald, clearance: 1, query: "how quickly must a suspicion be reported and to which authorities", relevant: [global-irl-aml-framework#004]}
+- {id: q02, tenant: emerald, clearance: 1, query: "can staff let the customer know we have filed a report about them", relevant: [global-irl-aml-framework#005]}
+- {id: q03, tenant: emerald, clearance: 3, query: "what may frontline staff say to a customer whose account has been frozen", relevant: [emerald-restricted-liaison#001, global-irl-aml-framework#005]}
+- {id: q04, tenant: emerald, clearance: 1, query: "how many years do investigation files need to be retained", relevant: [global-irl-aml-framework#006]}
+- {id: q05, tenant: liffey, clearance: 1, query: "additional checks for politically exposed customers", relevant: [global-irl-aml-framework#003]}
+- {id: q06, tenant: emerald, clearance: 1, query: "extra information to collect for payments involving countries with weak anti-money laundering regimes", relevant: [global-eu-hrtc-edd#001]}
+- {id: q07, tenant: emerald, clearance: 1, query: "customer sends money every month to relatives in a listed high risk country for hospital bills", relevant: [global-eu-hrtc-edd#003, global-false-positive-guide#001]}
+- {id: q08, tenant: liffey, clearance: 1, query: "is a connection to a high-risk jurisdiction on its own enough to report", relevant: [global-eu-hrtc-edd#004]}
+- {id: q09, tenant: emerald, clearance: 1, query: "warning signs of smurfing deposits kept under ten thousand euro", relevant: [global-typology-structuring#001]}
+- {id: q10, tenant: emerald, clearance: 2, query: "takeaway restaurant lodging weekend takings triggered the threshold rule", relevant: [global-typology-structuring#002, emerald-case-library-2025#001, global-false-positive-guide#001]}
+- {id: q11, tenant: emerald, clearance: 2, query: "teenager receiving transfers from lots of strangers and moving them to a crypto platform", relevant: [global-typology-money-mules#001, emerald-case-library-2025#000]}
+- {id: q12, tenant: liffey, clearance: 1, query: "flatmates splitting rent and bills through instant payments", relevant: [global-typology-money-mules#002]}
+- {id: q13, tenant: emerald, clearance: 1, query: "what steps should an analyst follow to investigate a pass-through account", relevant: [global-typology-money-mules#003]}
+- {id: q14, tenant: emerald, clearance: 3, query: "when should outgoing payments be blocked to stop further victim losses", relevant: [global-typology-money-mules#004, emerald-restricted-liaison#000]}
+- {id: q15, tenant: liffey, clearance: 1, query: "cash paid in at many branches in different towns then sent abroad by wire", relevant: [global-typology-trade-funnel-dormant#000]}
+- {id: q16, tenant: emerald, clearance: 2, query: "invoice for machinery parts forwarded to a sanctioned-risk country", relevant: [global-typology-trade-funnel-dormant#001, global-eu-hrtc-edd#002, emerald-case-library-2025#002]}
+- {id: q17, tenant: liffey, clearance: 1, query: "account unused for a long time suddenly gets big incoming amounts", relevant: [global-typology-trade-funnel-dormant#002]}
+- {id: q18, tenant: emerald, clearance: 1, query: "customer came back from abroad and received an inheritance", relevant: [global-typology-trade-funnel-dormant#003]}
+- {id: q19, tenant: emerald, clearance: 1, query: "what evidence is needed before an alert can be closed as not suspicious", relevant: [global-false-positive-guide#002, emerald-sop-alert-handling#004]}
+- {id: q20, tenant: liffey, clearance: 1, query: "situations in which an investigator must not close the case", relevant: [global-false-positive-guide#003]}
+- {id: q21, tenant: emerald, clearance: 1, query: "keep watching a customer more closely for three months without reporting", relevant: [global-false-positive-guide#004]}
+- {id: q22, tenant: emerald, clearance: 2, query: "large sum received from a solicitor and paid out days later for buying a home", relevant: [global-false-positive-guide#001, emerald-case-library-2025#004]}
+- {id: q23, tenant: emerald, clearance: 1, query: "deadline for reviewing a critical priority alert", relevant: [emerald-sop-alert-handling#000]}
+- {id: q24, tenant: emerald, clearance: 1, query: "who signs off closures and when is automatic closure permitted", relevant: [emerald-sop-alert-handling#003]}
+- {id: q25, tenant: emerald, clearance: 1, query: "limits on what the AI investigation assistant is allowed to do", relevant: [emerald-sop-alert-handling#002]}
+- {id: q26, tenant: emerald, clearance: 2, query: "what should the written narrative of a suspicious transaction report include", relevant: [emerald-str-procedure#001]}
+- {id: q27, tenant: emerald, clearance: 2, query: "how many business days does the reporting officer have to make a decision", relevant: [emerald-str-procedure#002]}
+- {id: q28, tenant: emerald, clearance: 3, query: "handling a garda production order", relevant: [emerald-restricted-liaison#002]}
+- {id: q29, tenant: emerald, clearance: 3, query: "financial intelligence unit tells us not to carry out a payment", relevant: [emerald-restricted-liaison#003]}
+- {id: q30, tenant: liffey, clearance: 1, query: "are alerts ever closed automatically at liffey", relevant: [liffey-sop-alert-handling#002]}
+- {id: q31, tenant: liffey, clearance: 1, query: "new consumer customers moving more than five thousand to crypto providers", relevant: [liffey-sop-alert-handling#003, global-typology-money-mules#001]}
+- {id: q32, tenant: liffey, clearance: 2, query: "suspending card acquiring for a suspicious merchant", relevant: [liffey-str-procedure#002]}
+- {id: q33, tenant: liffey, clearance: 3, query: "who can place a restriction on an e-money account and how often is it reviewed", relevant: [liffey-restricted-restriction#000, liffey-restricted-restriction#001]}
+- {id: q34, tenant: liffey, clearance: 1, query: "checks required before relying on an AI generated recommendation", relevant: [liffey-sop-alert-handling#004]}
+- {id: q35, tenant: emerald, clearance: 1, query: "the person who prepared a recommendation cannot also approve it", relevant: [emerald-sop-alert-handling#001]}
+- {id: q36, tenant: emerald, clearance: 2, query: "responsibilities of the money laundering reporting officer", relevant: [global-irl-aml-framework#007, emerald-str-procedure#000]}

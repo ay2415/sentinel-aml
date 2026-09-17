@@ -1,0 +1,13 @@
+# OpenTelemetry Collector: receive OTLP from API/workers, batch, export to Azure Monitor (prod) or console (local).
+receivers:
+  otlp: {protocols: {http: {endpoint: 0.0.0.0:4318}, grpc: {endpoint: 0.0.0.0:4317}}}
+processors:
+  batch: {}
+  attributes/redact:           # defence in depth: strip attributes that could carry personal data
+    actions: [{key: customer.name, action: delete}, {key: iban, action: delete}]
+exporters:
+  debug: {verbosity: basic}
+  azuremonitor: {connection_string: "${env:APPLICATIONINSIGHTS_CONNECTION_STRING}"}
+service:
+  pipelines:
+    traces: {receivers: [otlp], processors: [attributes/redact, batch], exporters: [debug, azuremonitor]}

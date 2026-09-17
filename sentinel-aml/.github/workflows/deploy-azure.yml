@@ -1,0 +1,27 @@
+name: deploy-azure
+# Manual, environment-gated deployment. Not executed during the build of this repository.
+on:
+  workflow_dispatch:
+    inputs:
+      environment: {type: choice, options: [staging, production], default: staging}
+permissions: {id-token: write, contents: read}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}   # production requires a GitHub environment reviewer (human approval)
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/login@v2            # OIDC federated credential: no long-lived secrets in GitHub
+        with: {client-id: "${{ secrets.AZURE_CLIENT_ID }}", tenant-id: "${{ secrets.AZURE_TENANT_ID }}", subscription-id: "${{ secrets.AZURE_SUBSCRIPTION_ID }}"}
+      - name: Build and push to ACR
+        run: |
+          az acr login --name ${{ vars.ACR_NAME }}
+          docker build -f backend/Dockerfile -t ${{ vars.ACR_NAME }}.azurecr.io/sentinel-api:${{ github.sha }} .
+          docker push ${{ vars.ACR_NAME }}.azurecr.io/sentinel-api:${{ github.sha }}
+      - name: Deploy infrastructure + new revision
+        run: |
+          az deployment group create -g ${{ vars.RESOURCE_GROUP }} -f infrastructure/azure/main.bicep \
+            -p environmentName=${{ inputs.environment }} apiImage=${{ vars.ACR_NAME }}.azurecr.io/sentinel-api:${{ github.sha }}
+      - name: Smoke test
+        run: curl -fsS "https://${{ vars.API_HOST }}/health/ready"

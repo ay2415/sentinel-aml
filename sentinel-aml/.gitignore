@@ -1,0 +1,15 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+data/raw/
+models/registry/
+models/embeddings/*.npy
+models/embeddings/*.json
+models/embeddings/*.gz
+.coverage
+htmlcov/
+.DS_Store

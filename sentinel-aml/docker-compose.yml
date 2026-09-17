@@ -1,0 +1,69 @@
+# Local stack.
+#   1. cp .env.example .env  (set JWT_SECRET and POSTGRES_PASSWORD)
+#   2. python scripts/download_embeddings.py        (one-off, ~376 MB download)
+#   3. docker compose up -d db && docker compose --profile setup run --rm pipeline
+#   4. docker compose up -d api worker dashboard     (+ --profile observability for Prometheus/Grafana)
+x-backend-env: &backend-env
+  ENVIRONMENT: local
+  DATABASE_URL: postgresql+psycopg2://sentinel:${POSTGRES_PASSWORD:-sentinel}@db:5432/sentinel
+  JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
+  LLM_PROVIDER: ${LLM_PROVIDER:-deterministic}
+  ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+  MODELS_DIR: /srv/models
+  EMBEDDING_CACHE_DIR: /srv/models/embeddings
+  PROMPTS_DIR: /srv/prompts
+  KNOWLEDGE_BASE_DIR: /srv/data/knowledge_base
+  DATA_DIR: /srv/data
+  CORS_ORIGINS: '["http://localhost:8501"]'
+
+x-backend: &backend
+  build: {context: ., dockerfile: backend/Dockerfile}
+  environment: *backend-env
+  volumes:
+    - models:/srv/models
+    - ./models/embeddings:/srv/models/embeddings:ro
+  depends_on: {db: {condition: service_healthy}}
+
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment: {POSTGRES_DB: sentinel, POSTGRES_USER: sentinel, POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-sentinel}"}
+    ports: ["127.0.0.1:5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck: {test: ["CMD-SHELL", "pg_isready -U sentinel -d sentinel"], interval: 5s, retries: 20}
+
+  pipeline:
+    <<: *backend
+    profiles: ["setup"]
+    command: ["python", "-m", "app.pipeline", "--all"]
+
+  api:
+    <<: *backend
+    ports: ["127.0.0.1:8000:8000"]
+
+  worker:
+    <<: *backend
+    command: ["python", "-m", "app.worker"]
+
+  dashboard:
+    build: {context: ., dockerfile: frontend/Dockerfile}
+    environment: {API_URL: "http://api:8000"}
+    ports: ["127.0.0.1:8501:8501"]
+    depends_on: [api]
+
+  prometheus:
+    image: prom/prometheus:v3.1.0
+    profiles: ["observability"]
+    volumes: ["./infrastructure/observability/prometheus.yml:/etc/prometheus/prometheus.yml:ro",
+              "./infrastructure/observability/alerts.yml:/etc/prometheus/alerts.yml:ro"]
+    ports: ["127.0.0.1:9090:9090"]
+
+  grafana:
+    image: grafana/grafana:11.4.0
+    profiles: ["observability"]
+    volumes:
+      - ./infrastructure/observability/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./infrastructure/observability/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    ports: ["127.0.0.1:3000:3000"]
+
+volumes: {pgdata: {}, models: {}}

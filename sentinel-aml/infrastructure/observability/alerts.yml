@@ -1,0 +1,34 @@
+groups:
+  - name: sentinel-aml
+    rules:
+      - alert: HighApiErrorRate
+        expr: sum(rate(http_requests_total{status=~"5.."}[5m])) / clamp_min(sum(rate(http_requests_total[5m])), 1) > 0.02
+        for: 10m
+        labels: {severity: page}
+        annotations: {summary: "API 5xx rate above 2% for 10 minutes"}
+      - alert: ApiLatencyP95High
+        expr: histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket{route!="/api/v1/alerts/{alert_id}/investigations"}[5m]))) > 0.5
+        for: 10m
+        labels: {severity: ticket}
+      - alert: LLMFailureRate
+        expr: sum(rate(llm_calls_total{status!="ok"}[15m])) / clamp_min(sum(rate(llm_calls_total[15m])), 1) > 0.05
+        for: 15m
+        labels: {severity: page}
+        annotations: {summary: "More than 5% of LLM calls failing - investigations are falling back to manual review"}
+      - alert: WorkflowsFallingToManualReview
+        expr: sum(rate(workflows_total{status="NEEDS_MANUAL_REVIEW"}[1h])) / clamp_min(sum(rate(workflows_total[1h])), 1) > 0.10
+        for: 1h
+        labels: {severity: ticket}
+      - alert: LLMSpendSpike
+        expr: sum(increase(llm_cost_usd_total[1h])) > 50
+        labels: {severity: ticket}
+        annotations: {summary: "Estimated LLM spend above USD 50 in the last hour"}
+      - alert: PromptInjectionSurge
+        expr: sum(increase(prompt_injection_flags_total[1h])) > 20
+        labels: {severity: ticket}
+        annotations: {summary: "Unusual volume of instruction-like payment references (possible coordinated manipulation)"}
+      - alert: RiskScoreDistributionShift
+        expr: histogram_quantile(0.5, sum by (le) (rate(ml_risk_score_bucket[6h]))) > 0.5
+        for: 6h
+        labels: {severity: ticket}
+        annotations: {summary: "Median risk score shifted - check /api/v1/ops/drift"}

@@ -1,0 +1,73 @@
+{
+  "generated_at": "2026-09-16T22:05:34.065909+00:00",
+  "environment": {
+    "cpu_count": 1,
+    "python": "3.12.3",
+    "server": "uvicorn, 1 worker",
+    "database": "PostgreSQL 16 + pgvector 0.6 on the same host",
+    "llm_provider": "deterministic (no network LLM latency)"
+  },
+  "endpoints": [
+    {
+      "endpoint": "GET /health/ready",
+      "requests": 200,
+      "concurrency": 8,
+      "p50_ms": 24.4,
+      "p95_ms": 36.6,
+      "p99_ms": 107.3,
+      "failure_rate": 0.0,
+      "throughput_rps": 289.0
+    },
+    {
+      "endpoint": "GET /api/v1/alerts (page 25)",
+      "requests": 400,
+      "concurrency": 8,
+      "p50_ms": 48.8,
+      "p95_ms": 63.6,
+      "p99_ms": 69.9,
+      "failure_rate": 0.0,
+      "throughput_rps": 161.3
+    },
+    {
+      "endpoint": "GET /api/v1/alerts/{id}",
+      "requests": 400,
+      "concurrency": 8,
+      "p50_ms": 38.8,
+      "p95_ms": 49.6,
+      "p99_ms": 106.1,
+      "failure_rate": 0.0,
+      "throughput_rps": 196.0
+    },
+    {
+      "endpoint": "POST /api/v1/kb/search",
+      "requests": 300,
+      "concurrency": 8,
+      "p50_ms": 74.5,
+      "p95_ms": 105.9,
+      "p99_ms": 319.3,
+      "failure_rate": 0.0,
+      "throughput_rps": 97.4
+    },
+    {
+      "endpoint": "POST /api/v1/alerts/{id}/investigations (sync, deterministic)",
+      "requests": 40,
+      "concurrency": 4,
+      "p50_ms": 259.9,
+      "p95_ms": 423.9,
+      "p99_ms": 442.1,
+      "failure_rate": 0.0,
+      "throughput_rps": 14.5
+    },
+    {
+      "endpoint": "GET /api/v1/analytics/kpis",
+      "requests": 100,
+      "concurrency": 8,
+      "p50_ms": 67.0,
+      "p95_ms": 77.8,
+      "p99_ms": 79.9,
+      "failure_rate": 0.0,
+      "throughput_rps": 118.7
+    }
+  ],
+  "caveat": "Single shared CPU in a sandbox; absolute numbers are a floor for comparison, not a capacity claim. Workflow latency excludes real LLM latency (typically seconds per call)."
+}

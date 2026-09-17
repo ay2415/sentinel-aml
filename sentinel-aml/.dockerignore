@@ -1,0 +1,11 @@
+.git
+.env
+**/__pycache__
+**/.pytest_cache
+venv
+.venv
+data/raw
+models
+docs
+notebooks
+evaluation

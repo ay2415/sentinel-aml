@@ -1,0 +1,520 @@
+{
+  "generated_at": "2026-09-16T22:25:54.375406+00:00",
+  "k": 5,
+  "queries": 36,
+  "embedding_model": "glove-wiki-gigaword-300-sif (local)",
+  "reranker": "lexical-coverage (local)",
+  "modes": {
+    "dense": {
+      "recall@5": 0.7361,
+      "precision@5": 0.2056,
+      "mrr": 0.6669,
+      "ndcg@5": 0.6494,
+      "hit@5": 0.7778,
+      "latency_p50_ms": 4.82,
+      "latency_p95_ms": 51.99
+    },
+    "lexical": {
+      "recall@5": 0.8796,
+      "precision@5": 0.2333,
+      "mrr": 0.781,
+      "ndcg@5": 0.7869,
+      "hit@5": 0.9167,
+      "latency_p50_ms": 4.72,
+      "latency_p95_ms": 5.7
+    },
+    "hybrid": {
+      "recall@5": 0.9028,
+      "precision@5": 0.2389,
+      "mrr": 0.7659,
+      "ndcg@5": 0.7843,
+      "hit@5": 0.9444,
+      "latency_p50_ms": 6.11,
+      "latency_p95_ms": 6.87
+    },
+    "hybrid_rerank": {
+      "recall@5": 0.9028,
+      "precision@5": 0.2389,
+      "mrr": 0.8014,
+      "ndcg@5": 0.8067,
+      "hit@5": 0.9444,
+      "latency_p50_ms": 6.64,
+      "latency_p95_ms": 7.87
+    }
+  },
+  "acl_audit": {
+    "results_checked": 21147,
+    "unauthorised_results": 0
+  },
+  "per_query_hybrid_rerank": [
+    {
+      "id": "q01",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "global-irl-aml-framework#004",
+        "emerald-sop-alert-handling#002",
+        "emerald-sop-alert-handling#000"
+      ]
+    },
+    {
+      "id": "q02",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "global-irl-aml-framework#005",
+        "global-irl-aml-framework#004",
+        "emerald-sop-alert-handling#004"
+      ]
+    },
+    {
+      "id": "q03",
+      "recall": 1.0,
+      "precision": 0.4,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "global-irl-aml-framework#005",
+        "emerald-restricted-liaison#001",
+        "emerald-str-procedure#001"
+      ]
+    },
+    {
+      "id": "q04",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "global-irl-aml-framework#006",
+        "emerald-sop-alert-handling#002",
+        "global-false-positive-guide#003"
+      ]
+    },
+    {
+      "id": "q05",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "global-irl-aml-framework#003",
+        "global-false-positive-guide#003",
+        "global-irl-aml-framework#002"
+      ]
+    },
+    {
+      "id": "q06",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 0.5,
+      "ndcg": 0.631,
+      "hit": 1.0,
+      "top3": [
+        "global-irl-aml-framework#003",
+        "global-eu-hrtc-edd#001",
+        "global-typology-money-mules#001"
+      ]
+    },
+    {
+      "id": "q07",
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.143,
+      "ndcg": 0.0,
+      "hit": 0.0,
+      "top3": [
+        "global-typology-trade-funnel-dormant#001",
+        "global-eu-hrtc-edd#004",
+        "global-typology-money-mules#002"
+      ]
+    },
+    {
+      "id": "q08",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "global-eu-hrtc-edd#004",
+        "global-typology-trade-funnel-dormant#001",
+        "global-eu-hrtc-edd#002"
+      ]
+    },
+    {
+      "id": "q09",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 0.333,
+      "ndcg": 0.5,
+      "hit": 1.0,
+      "top3": [
+        "global-typology-structuring#000",
+        "global-typology-structuring#002",
+        "global-typology-structuring#001"
+      ]
+    },
+    {
+      "id": "q10",
+      "recall": 1.0,
+      "precision": 0.6,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "emerald-case-library-2025#001",
+        "global-typology-structuring#002",
+        "global-false-positive-guide#001"
+      ]
+    },
+    {
+      "id": "q11",
+      "recall": 0.5,
+      "precision": 0.2,
+      "mrr": 0.5,
+      "ndcg": 0.387,
+      "hit": 1.0,
+      "top3": [
+        "global-typology-money-mules#000",
+        "global-typology-money-mules#001",
+        "global-typology-trade-funnel-dormant#002"
+      ]
+    },
+    {
+      "id": "q12",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "global-typology-money-mules#002",
+        "global-typology-money-mules#001",
+        "global-false-positive-guide#001"
+      ]
+    },
+    {
+      "id": "q13",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 0.5,
+      "ndcg": 0.631,
+      "hit": 1.0,
+      "top3": [
+        "global-typology-money-mules#004",
+        "global-typology-money-mules#003",
+        "global-typology-money-mules#000"
+      ]
+    },
+    {
+      "id": "q14",
+      "recall": 1.0,
+      "precision": 0.4,
+      "mrr": 1.0,
+      "ndcg": 0.92,
+      "hit": 1.0,
+      "top3": [
+        "global-typology-money-mules#004",
+        "global-typology-money-mules#001",
+        "emerald-restricted-liaison#000"
+      ]
+    },
+    {
+      "id": "q15",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "global-typology-trade-funnel-dormant#000",
+        "global-typology-structuring#001",
+        "global-false-positive-guide#001"
+      ]
+    },
+    {
+      "id": "q16",
+      "recall": 1.0,
+      "precision": 0.6,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "global-typology-trade-funnel-dormant#001",
+        "emerald-case-library-2025#002",
+        "global-eu-hrtc-edd#002"
+      ]
+    },
+    {
+      "id": "q17",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 0.5,
+      "ndcg": 0.631,
+      "hit": 1.0,
+      "top3": [
+        "global-typology-money-mules#001",
+        "global-typology-trade-funnel-dormant#002",
+        "global-typology-money-mules#003"
+      ]
+    },
+    {
+      "id": "q18",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 0.5,
+      "ndcg": 0.631,
+      "hit": 1.0,
+      "top3": [
+        "global-eu-hrtc-edd#002",
+        "global-typology-trade-funnel-dormant#003",
+        "global-typology-money-mules#001"
+      ]
+    },
+    {
+      "id": "q19",
+      "recall": 0.5,
+      "precision": 0.2,
+      "mrr": 0.25,
+      "ndcg": 0.264,
+      "hit": 1.0,
+      "top3": [
+        "global-irl-aml-framework#004",
+        "emerald-sop-alert-handling#002",
+        "global-false-positive-guide#003"
+      ]
+    },
+    {
+      "id": "q20",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "global-false-positive-guide#003",
+        "global-eu-hrtc-edd#004",
+        "global-false-positive-guide#000"
+      ]
+    },
+    {
+      "id": "q21",
+      "recall": 0.0,
+      "precision": 0.0,
+      "mrr": 0.125,
+      "ndcg": 0.0,
+      "hit": 0.0,
+      "top3": [
+        "global-irl-aml-framework#004",
+        "global-typology-structuring#003",
+        "global-typology-money-mules#003"
+      ]
+    },
+    {
+      "id": "q22",
+      "recall": 1.0,
+      "precision": 0.4,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "emerald-case-library-2025#004",
+        "global-false-positive-guide#001",
+        "global-typology-money-mules#002"
+      ]
+    },
+    {
+      "id": "q23",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "emerald-sop-alert-handling#000",
+        "emerald-sop-alert-handling#002",
+        "emerald-sop-alert-handling#001"
+      ]
+    },
+    {
+      "id": "q24",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "emerald-sop-alert-handling#003",
+        "global-false-positive-guide#000",
+        "emerald-sop-alert-handling#001"
+      ]
+    },
+    {
+      "id": "q25",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "emerald-sop-alert-handling#002",
+        "global-irl-aml-framework#005",
+        "global-false-positive-guide#003"
+      ]
+    },
+    {
+      "id": "q26",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 0.5,
+      "ndcg": 0.631,
+      "hit": 1.0,
+      "top3": [
+        "global-irl-aml-framework#004",
+        "emerald-str-procedure#001",
+        "global-irl-aml-framework#005"
+      ]
+    },
+    {
+      "id": "q27",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "emerald-str-procedure#002",
+        "global-irl-aml-framework#004",
+        "emerald-sop-alert-handling#000"
+      ]
+    },
+    {
+      "id": "q28",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 0.5,
+      "ndcg": 0.631,
+      "hit": 1.0,
+      "top3": [
+        "emerald-str-procedure#003",
+        "emerald-restricted-liaison#002",
+        "emerald-sop-alert-handling#001"
+      ]
+    },
+    {
+      "id": "q29",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "emerald-restricted-liaison#003",
+        "global-typology-money-mules#001",
+        "global-eu-hrtc-edd#002"
+      ]
+    },
+    {
+      "id": "q30",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "liffey-sop-alert-handling#002",
+        "liffey-sop-alert-handling#000",
+        "liffey-sop-alert-handling#001"
+      ]
+    },
+    {
+      "id": "q31",
+      "recall": 1.0,
+      "precision": 0.4,
+      "mrr": 1.0,
+      "ndcg": 0.92,
+      "hit": 1.0,
+      "top3": [
+        "liffey-sop-alert-handling#003",
+        "global-typology-money-mules#002",
+        "global-typology-money-mules#001"
+      ]
+    },
+    {
+      "id": "q32",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "liffey-str-procedure#002",
+        "global-irl-aml-framework#004",
+        "liffey-sop-alert-handling#003"
+      ]
+    },
+    {
+      "id": "q33",
+      "recall": 1.0,
+      "precision": 0.4,
+      "mrr": 0.5,
+      "ndcg": 0.651,
+      "hit": 1.0,
+      "top3": [
+        "global-typology-money-mules#000",
+        "liffey-restricted-restriction#000",
+        "global-typology-money-mules#002"
+      ]
+    },
+    {
+      "id": "q34",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "liffey-sop-alert-handling#004",
+        "global-eu-hrtc-edd#001",
+        "global-irl-aml-framework#004"
+      ]
+    },
+    {
+      "id": "q35",
+      "recall": 1.0,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 1.0,
+      "hit": 1.0,
+      "top3": [
+        "emerald-sop-alert-handling#001",
+        "global-irl-aml-framework#004",
+        "emerald-sop-alert-handling#002"
+      ]
+    },
+    {
+      "id": "q36",
+      "recall": 0.5,
+      "precision": 0.2,
+      "mrr": 1.0,
+      "ndcg": 0.613,
+      "hit": 1.0,
+      "top3": [
+        "global-irl-aml-framework#007",
+        "global-irl-aml-framework#004",
+        "global-irl-aml-framework#001"
+      ]
+    }
+  ],
+  "caveat": "Single-annotator labels on a 62-chunk synthetic corpus; indicative only."
+}

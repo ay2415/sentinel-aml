@@ -1,0 +1,88 @@
+{
+  "generate": {
+    "generator": "sentinel-aml-synthetic",
+    "seed": 42,
+    "customers_per_tenant": {
+      "emerald": 1800,
+      "liffey": 1200
+    },
+    "suspicious_rate": 0.06,
+    "files": {
+      "customers": {
+        "rows": 3000,
+        "sha256": "5229f70dee79a88fa2b016585155e8d26e7a5f0abea18d34f0267aca5b22f6ac"
+      },
+      "accounts": {
+        "rows": 3000,
+        "sha256": "d732855b490ff3a57fa6e1bf540d8ccb6f732085c4693464fe8c156842a46429"
+      },
+      "transactions": {
+        "rows": 771818,
+        "sha256": "7f611c74c05b33eaf19dfec072a3febe13db3d4a0023969bfd9555d73396c4cd"
+      },
+      "labels": {
+        "rows": 3000,
+        "sha256": "4a2b9d4693e54338f63f4db56b8e5259e460182dd3fb8ad02866167cae7f9231"
+      }
+    },
+    "seconds": 18.3
+  },
+  "ingest": {
+    "customers_loaded": 3000,
+    "accounts_loaded": 3000,
+    "transactions_batch": {
+      "id": "9b1cd147-aa06-4430-9255-9e35ba1fbd3d",
+      "status": "SUCCEEDED",
+      "loaded": 759983,
+      "rejected": 4237,
+      "duplicates": 7598,
+      "report": {
+        "rows_in": 771818,
+        "rejected_by_reason": {
+          "non_positive_amount": 1549,
+          "unparseable_timestamp": 771,
+          "unknown_account": 769,
+          "unsupported_currency": 761,
+          "future_timestamp": 387
+        },
+        "missing_counterparty_country": 15328,
+        "missing_reference": 620208,
+        "amount_eur_p50": 29.28,
+        "amount_eur_p99": 6824.793400000058,
+        "in_file_duplicate_ids": 7598,
+        "near_duplicates_new_id": 0,
+        "missing_country_imputed_ZZ": 15328,
+        "amount_eur_max": 418785.98,
+        "reject_rate": 0.00549,
+        "missing_country_rate": 0.01986,
+        "gate_failures": [],
+        "references_with_injection_flags": 37,
+        "already_loaded_ids_skipped": 0
+      }
+    },
+    "seconds": 37.0
+  },
+  "users_created": 9,
+  "scan": {
+    "alerts_created": 3215,
+    "suppressed": 3632,
+    "customers_scanned": 2916,
+    "scan_dates": 18,
+    "seconds": 38.1
+  },
+  "train": {
+    "version": "v20260916220329",
+    "promoted": true,
+    "gates": {
+      "beats_baseline_pr_auc": true,
+      "test_recall_at_threshold_ge_0.90": true,
+      "group_cv_roc_auc_ge_0.80": true
+    }
+  },
+  "scored": 3215,
+  "index": {
+    "indexed": 13,
+    "quarantined": 0,
+    "chunks": 62
+  }
+}

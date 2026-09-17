@@ -1,0 +1,7 @@
+-r requirements.txt
+pytest==9.1.1
+pytest-cov==7.1.0
+ruff>=0.8
+bandit>=1.8
+pip-audit>=2.7
+streamlit==1.64.*

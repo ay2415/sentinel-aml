@@ -1,0 +1,254 @@
+{
+  "split": {
+    "train": 1977,
+    "calibration": 435,
+    "test": 803,
+    "train_end": "2026-05-22 00:00:00+00:00",
+    "test_start": "2026-06-05 00:00:00+00:00"
+  },
+  "target_recall": 0.95,
+  "logistic_regression_test": {
+    "n": 803,
+    "positives": 230,
+    "prevalence": 0.286425902864259,
+    "roc_auc": 0.9612944836482282,
+    "pr_auc": 0.9581252656188756,
+    "threshold": 0.15073979623147732,
+    "precision": 0.8641975308641975,
+    "recall": 0.9130434782608695,
+    "f1": 0.8879492600422833,
+    "confusion_matrix": {
+      "tn": 540,
+      "fp": 33,
+      "fn": 20,
+      "tp": 210
+    },
+    "brier": 0.027182843270638402,
+    "ece": 0.020769696133484766,
+    "precision_at_top10pct": 1.0,
+    "workload_deprioritised_share": 0.6973848069738481
+  },
+  "xgboost_uncalibrated_test": {
+    "n": 803,
+    "positives": 230,
+    "prevalence": 0.286425902864259,
+    "roc_auc": 0.9789134228697169,
+    "pr_auc": 0.9758894099451938,
+    "threshold": 0.6588181257247925,
+    "precision": 1.0,
+    "recall": 0.9217391304347826,
+    "f1": 0.9592760180995475,
+    "confusion_matrix": {
+      "tn": 573,
+      "fp": 0,
+      "fn": 18,
+      "tp": 212
+    },
+    "brier": 0.021533852443099022,
+    "ece": 0.018723251916245458,
+    "precision_at_top10pct": 1.0,
+    "workload_deprioritised_share": 0.7359900373599004
+  },
+  "xgboost_calibrated_test": {
+    "n": 803,
+    "positives": 230,
+    "prevalence": 0.286425902864259,
+    "roc_auc": 0.9789134228697169,
+    "pr_auc": 0.9758894099451938,
+    "threshold": 0.6620598518977973,
+    "precision": 1.0,
+    "recall": 0.9217391304347826,
+    "f1": 0.9592760180995475,
+    "confusion_matrix": {
+      "tn": 573,
+      "fp": 0,
+      "fn": 18,
+      "tp": 212
+    },
+    "brier": 0.021293963587034538,
+    "ece": 0.017178832928106624,
+    "precision_at_top10pct": 1.0,
+    "workload_deprioritised_share": 0.7359900373599004
+  },
+  "xgboost_isotonic_test_comparison": {
+    "n": 803,
+    "positives": 230,
+    "prevalence": 0.286425902864259,
+    "roc_auc": 0.9681424994309128,
+    "pr_auc": 0.9517537463142853,
+    "threshold": 0.8,
+    "precision": 1.0,
+    "recall": 0.9217391304347826,
+    "f1": 0.9592760180995475,
+    "confusion_matrix": {
+      "tn": 573,
+      "fp": 0,
+      "fn": 18,
+      "tp": 212
+    },
+    "brier": 0.02217196536352053,
+    "ece": 0.0173900784667894,
+    "precision_at_top10pct": 1.0,
+    "workload_deprioritised_share": 0.7359900373599004
+  },
+  "operating_curve_test": [
+    {
+      "target_recall_on_dev": 0.9,
+      "threshold": 0.93,
+      "test_recall": 0.913,
+      "test_deprioritised_share": 0.7385,
+      "test_precision": 1.0
+    },
+    {
+      "target_recall_on_dev": 0.95,
+      "threshold": 0.6621,
+      "test_recall": 0.9217,
+      "test_deprioritised_share": 0.736,
+      "test_precision": 1.0
+    },
+    {
+      "target_recall_on_dev": 0.98,
+      "threshold": 0.0037,
+      "test_recall": 0.9783,
+      "test_deprioritised_share": 0.3263,
+      "test_precision": 0.4159
+    },
+    {
+      "target_recall_on_dev": 0.99,
+      "threshold": 0.003,
+      "test_recall": 0.9783,
+      "test_deprioritised_share": 0.2852,
+      "test_precision": 0.392
+    }
+  ],
+  "threshold_selection": "5-fold customer-grouped out-of-fold predictions over train+calibration period",
+  "breakdown_test": {
+    "rule_code": {
+      "R01_STRUCTURING": {
+        "n": 140,
+        "positives": 29,
+        "recall_at_threshold": 0.896551724137931,
+        "deprioritised_share": 0.8142857142857143
+      },
+      "R02_RAPID_MOVEMENT": {
+        "n": 429,
+        "positives": 123,
+        "recall_at_threshold": 0.9105691056910569,
+        "deprioritised_share": 0.7389277389277389
+      },
+      "R03_HIGH_RISK_JURISDICTION": {
+        "n": 75,
+        "positives": 11,
+        "recall_at_threshold": 1.0,
+        "deprioritised_share": 0.8533333333333334
+      },
+      "R04_VELOCITY_SPIKE": {
+        "n": 18,
+        "positives": 18,
+        "recall_at_threshold": 1.0,
+        "deprioritised_share": 0.0
+      },
+      "R05_LARGE_CASH": {
+        "n": 134,
+        "positives": 42,
+        "recall_at_threshold": 0.9047619047619048,
+        "deprioritised_share": 0.7164179104477612
+      },
+      "R06_DORMANT_REACTIVATION": {
+        "n": 7,
+        "positives": 7,
+        "recall_at_threshold": 1.0,
+        "deprioritised_share": 0.0
+      }
+    },
+    "tenant_id": {
+      "emerald": {
+        "n": 501,
+        "positives": 158,
+        "recall_at_threshold": 0.9113924050632911,
+        "deprioritised_share": 0.7125748502994012
+      },
+      "liffey": {
+        "n": 302,
+        "positives": 72,
+        "recall_at_threshold": 0.9444444444444444,
+        "deprioritised_share": 0.7748344370860927
+      }
+    }
+  },
+  "isolation_forest_test_roc_auc": 0.9395477653843234,
+  "customer_group_cv_xgboost": {
+    "folds": 5,
+    "roc_auc_mean": 0.9823248586610743,
+    "roc_auc_std": 0.014700645570627216,
+    "pr_auc_mean": 0.9794798341838181,
+    "pr_auc_std": 0.015395359996731053
+  },
+  "top_feature_importance": [
+    [
+      "unique_counterparties_in_30d",
+      0.2916071116924286
+    ],
+    [
+      "txn_count_30d",
+      0.094947949051857
+    ],
+    [
+      "unique_cash_branches_30d",
+      0.07409992069005966
+    ],
+    [
+      "crypto_out_amount_30d",
+      0.06923805922269821
+    ],
+    [
+      "intl_wire_out_amount_30d",
+      0.04224270582199097
+    ],
+    [
+      "txn_count_7d",
+      0.040256317704916
+    ],
+    [
+      "high_risk_country_amount_30d",
+      0.03709716349840164
+    ],
+    [
+      "total_in_30d",
+      0.036951132118701935
+    ],
+    [
+      "cash_deposit_count_30d",
+      0.03465214744210243
+    ],
+    [
+      "high_risk_country_txn_count_30d",
+      0.0278431735932827
+    ],
+    [
+      "velocity_ratio_30d",
+      0.02775120735168457
+    ],
+    [
+      "segment_sme",
+      0.02536929026246071
+    ],
+    [
+      "cash_in_amount_30d",
+      0.02111775614321232
+    ],
+    [
+      "near_threshold_cash_count_30d",
+      0.020824728533625603
+    ],
+    [
+      "avg_txn_amount_30d",
+      0.01682906597852707
+    ]
+  ],
+  "promotion_gates": {
+    "beats_baseline_pr_auc": true,
+    "test_recall_at_threshold_ge_0.90": true,
+    "group_cv_roc_auc_ge_0.80": true
+  }
+}
